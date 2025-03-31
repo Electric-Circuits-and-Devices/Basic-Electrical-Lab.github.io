@@ -35,20 +35,26 @@
             border-collapse: collapse;
             width: 100%;
         }
-            th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-            }
-            th {
-            background-color: #f2f2f2;
-            }
-            .light-blue {
-            background-color: lightblue;
-            }
-            .gray {
-            background-color: gray;
-            }
+        th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+        }
+        th {
+        background-color: #f2f2f2;
+        }
+        .light-blue {
+        background-color: lightblue;
+        }
+        .gray {
+        background-color: gray;
+        }
+        .example-row {
+            background-color: #fce8e8; /* สีชมพูอ่อน */
+        }
+        .red {
+            color: red;
+        }    
 
     </style>
 </head>
@@ -64,7 +70,7 @@
         การไหลหรือหยุดไหลของน้ำ การติด-ดับของหลอดไฟ ฯลฯ ซึ่งในโลกทางกายภาพ สถานะของสิ่งที่กล่าวมา มักอยู่ในรูปของแรงดันหรือกระแสไฟฟ้า การนำค่าต่างๆ เข้ามาทางระบบควบคุม ต้องคำนึงถึงแรงดันหรือกระแสไฟฟ้าเป็นสำคัญ ระบบไมโครคอนโทรลเลอร์ หรือระบบที่มี CPU เป็นตัวประมวลผล มักจะทำงานด้วยแรงดันไฟฟ้าตามที่ผู้ผลิตชิป ได้ออกแบบไว้เท่านั้น เช่น 3.3 V หรือ 5.0 V ซึ่งอาจจะไม่สามารถเชื่อมต่อกับสัญญาณจากโลกทางกายภาพได้โดยตรง เนื่องจากสัญญาณเหล่านั้นมักมีแรงดันสูงกว่า เช่น ในรถยนต์ใช้แรงดัน 12 โวลต์ ในระบบเซลล์สุริยะมีแรงดัน 18 – 20 โวลต์ เป็นต้น
     </p>
 
-
+    <img src="pictures/Voltage_Divider.png" alt="Voltage Divider">
     <h4>รูปที่ 4.1 แนวคิดในการลดทอนแรงดันขนาดใหญ่เป็นแรงดันขนาดเล็ก</h4>
     <p>
         การแบ่งแรงดันคือการลดทอนแรงดันขนาดใหญ่ให้มีขนาดเล็กลง โดยไม่เปลี่ยนแปลงรูปร่างของสัญญาณ 
@@ -143,8 +149,8 @@
         </p>
           
 
-        <h3>ตอนที่ 1. วงจรแบ่งแรงดันด้วยตัวต้านทาน 2 ตัว</h3>
         <ol>
+            <h3>ตอนที่ 1. วงจรแบ่งแรงดันด้วยตัวต้านทาน 2 ตัว</h3>
             <li>เปิด power supply ปรับแรงดันไว้ที่ 0 โวลต์</li>
             <li>ปิด power supply</li>
             <li>เชื่อมต่อแหล่งจ่ายกำลัง V<sub>s</sub> และมัลติมิเตอร์ 1 - 2 เข้ากับแผงวงจรในรูป 4.3 ดังวงจรในรูปที่ 4.4 โดยให้มัลติมิเตอร์ 1 ทำหน้าที่วัดกระแสไฟฟ้า และมัลติมิเตอร์ 2 ทำหน้าที่วัดแรงดันไฟฟ้า</li>
@@ -208,7 +214,564 @@
         
           <li>เปลี่ยนค่าตัวต้านทาน X<sub>1</sub> = 2.2kΩ และ X<sub>2</sub> = 1kΩ</li>
           <li>วัดและบันทึกค่าแรงดันและกระแสลงในตาราง พร้อมทั้งคำนวณค่าต่างๆ ในตารางให้ครบถ้วน</li>
-      
+          <table>
+            <tr>
+              <th></th>
+              <th>R<sub>1</sub> (2.2kΩ)</th>
+              <th>R<sub>2</sub> (1kΩ)</th>
+              <th>Total</th>
+              <th>Unit</th>
+              <th>Check (OK?)</th>
+            </tr>
+            <tr>
+              <td class="light-blue">E (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Volt</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">I (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Amp</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">R (อ่านจากค่าสี)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Ohm</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">Check (OK?)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gray"></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <li>เปลี่ยนค่าตัวต้านทาน X<sub>1</sub> = 3.3kΩ และ X<sub>2</sub> = 1kΩ</li>
+          <li>วัดและบันทึกค่าแรงดันและกระแสลงในตาราง พร้อมทั้งคำนวณค่าต่างๆ ในตารางให้ครบถ้วน</li>
+
+          <table>
+            <tr>
+              <th></th>
+              <th>R<sub>1</sub> (3.3kΩ)</th>
+              <th>R<sub>2</sub> (1kΩ)</th>
+              <th>Total</th>
+              <th>Unit</th>
+              <th>Check (OK?)</th>
+            </tr>
+            <tr>
+              <td class="light-blue">E (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Volt</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">I (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Amp</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">R (อ่านจากค่าสี)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Ohm</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">Check (OK?)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gray"></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <li>เปลี่ยนค่าตัวต้านทาน X<sub>1</sub> = 4.7kΩ และ X<sub>2</sub> = 1kΩ</li>
+          <li>วัดและบันทึกค่าแรงดันและกระแสลงในตาราง พร้อมทั้งคำนวณค่าต่างๆ ในตารางให้ครบถ้วน</li>
+
+          <table>
+            <tr>
+              <th></th>
+              <th>R<sub>1</sub> (4.7kΩ)</th>
+              <th>R<sub>2</sub> (1kΩ)</th>
+              <th>Total</th>
+              <th>Unit</th>
+              <th>Check (OK?)</th>
+            </tr>
+            <tr>
+              <td class="light-blue">E (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Volt</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">I (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Amp</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">R (อ่านจากค่าสี)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Ohm</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">Check (OK?)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gray"></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <li>เปลี่ยนค่าตัวต้านทาน X<sub>1</sub> = 5.6kΩ และ X<sub>2</sub> = 1kΩ</li>
+          <li>วัดและบันทึกค่าแรงดันและกระแสลงในตาราง พร้อมทั้งคำนวณค่าต่างๆ ในตารางให้ครบถ้วน</li>
+
+          <table>
+            <tr>
+              <th></th>
+              <th>R<sub>1</sub> (5.6kΩ)</th>
+              <th>R<sub>2</sub> (1kΩ)</th>
+              <th>Total</th>
+              <th>Unit</th>
+              <th>Check (OK?)</th>
+            </tr>
+            <tr>
+              <td class="light-blue">E (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Volt</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">I (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Amp</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">R (อ่านจากค่าสี)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Ohm</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">Check (OK?)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gray"></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <li>เปลี่ยนค่าตัวต้านทาน X<sub>1</sub> = 10kΩ และ X<sub>2</sub> = 1kΩ</li>
+          <li>วัดและบันทึกค่าแรงดันและกระแสลงในตาราง พร้อมทั้งคำนวณค่าต่างๆ ในตารางให้ครบถ้วน</li>
+
+          <table>
+            <tr>
+              <th></th>
+              <th>R<sub>1</sub> (10kΩ)</th>
+              <th>R<sub>2</sub> (1kΩ)</th>
+              <th>Total</th>
+              <th>Unit</th>
+              <th>Check (OK?)</th>
+            </tr>
+            <tr>
+              <td class="light-blue">E (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Volt</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">I (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Amp</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">R (อ่านจากค่าสี)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Ohm</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">Check (OK?)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gray"></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <li>เปลี่ยนค่าตัวต้านทาน X<sub>1</sub> = 1kΩ และ X<sub>2</sub> = 10kΩ</li>
+          <li>วัดและบันทึกค่าแรงดันและกระแสลงในตาราง พร้อมทั้งคำนวณค่าต่างๆ ในตารางให้ครบถ้วน</li>
+
+          <table>
+            <tr>
+              <th></th>
+              <th>R<sub>1</sub> (1kΩ)</th>
+              <th>R<sub>2</sub> (10kΩ)</th>
+              <th>Total</th>
+              <th>Unit</th>
+              <th>Check (OK?)</th>
+            </tr>
+            <tr>
+              <td class="light-blue">E (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Volt</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">I (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Amp</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">R (อ่านจากค่าสี)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Ohm</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">Check (OK?)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gray"></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <li>เปลี่ยนค่าตัวต้านทาน X<sub>1</sub> = 1kΩ และ X<sub>2</sub> = 5.6kΩ</li>
+          <li>วัดและบันทึกค่าแรงดันและกระแสลงในตาราง พร้อมทั้งคำนวณค่าต่างๆ ในตารางให้ครบถ้วน</li>
+
+          <table>
+            <tr>
+              <th></th>
+              <th>R<sub>1</sub> (1kΩ)</th>
+              <th>R<sub>2</sub> (5.6kΩ)</th>
+              <th>Total</th>
+              <th>Unit</th>
+              <th>Check (OK?)</th>
+            </tr>
+            <tr>
+              <td class="light-blue">E (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Volt</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">I (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Amp</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">R (อ่านจากค่าสี)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Ohm</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">Check (OK?)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gray"></td>
+              <td></td>
+            </tr>
+          </table>
+
+
+          <li>เปลี่ยนค่าตัวต้านทาน X<sub>1</sub> = 1kΩ และ X<sub>2</sub> = 4.7kΩ</li>
+          <li>วัดและบันทึกค่าแรงดันและกระแสลงในตาราง พร้อมทั้งคำนวณค่าต่างๆ ในตารางให้ครบถ้วน</li>
+
+          <table>
+            <tr>
+              <th></th>
+              <th>R<sub>1</sub> (1kΩ)</th>
+              <th>R<sub>2</sub> (4.7kΩ)</th>
+              <th>Total</th>
+              <th>Unit</th>
+              <th>Check (OK?)</th>
+            </tr>
+            <tr>
+              <td class="light-blue">E (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Volt</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">I (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Amp</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">R (อ่านจากค่าสี)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Ohm</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">Check (OK?)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gray"></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <li>เปลี่ยนค่าตัวต้านทาน X<sub>1</sub> = 1kΩ และ X<sub>2</sub> = 3.3kΩ</li>
+          <li>วัดและบันทึกค่าแรงดันและกระแสลงในตาราง พร้อมทั้งคำนวณค่าต่างๆ ในตารางให้ครบถ้วน</li>
+
+          <table>
+            <tr>
+              <th></th>
+              <th>R<sub>1</sub> (1kΩ)</th>
+              <th>R<sub>2</sub> (3.3kΩ)</th>
+              <th>Total</th>
+              <th>Unit</th>
+              <th>Check (OK?)</th>
+            </tr>
+            <tr>
+              <td class="light-blue">E (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Volt</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">I (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Amp</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">R (อ่านจากค่าสี)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Ohm</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">Check (OK?)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gray"></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <li>เปลี่ยนค่าตัวต้านทาน X<sub>1</sub> = 1kΩ และ X<sub>2</sub> = 2.2kΩ</li>
+          <li>วัดและบันทึกค่าแรงดันและกระแสลงในตาราง พร้อมทั้งคำนวณค่าต่างๆ ในตารางให้ครบถ้วน</li>
+
+          <table>
+            <tr>
+              <th></th>
+              <th>R<sub>1</sub> (1kΩ)</th>
+              <th>R<sub>2</sub> (2.2kΩ)</th>
+              <th>Total</th>
+              <th>Unit</th>
+              <th>Check (OK?)</th>
+            </tr>
+            <tr>
+              <td class="light-blue">E (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Volt</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">I (จากการวัด)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Amp</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">R (อ่านจากค่าสี)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Ohm</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="light-blue">Check (OK?)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="gray"></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <h3>ตอนที่ 2 กฎแรงดันของเคอร์ชอฟฟ์</h3>
+          <li>นำค่าจากการทดลองตอนที่ 1 มาวิเคราะห์ตามกฎแรงดันของเคอร์ชอฟฟ์ “ผลรวมทางพีชคณิตในวงจรอนุกรม (ลูปปิด) มีค่าเป็นศูนย์” และคำนวณค่าตามสมการ 
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mo>-</mo>
+              <mi>E</mi>
+              <mo>+</mo>
+              <msub>
+                <mi>V</mi>
+                <mi>R1</mi>
+              </msub>
+              <mo>+</mo>
+              <msub>
+                <mi>V</mi>
+                <mi>R2</mi>
+              </msub>
+              <mo>=</mo>
+              <mn>0</mn>
+            </math>
+          </li></math>
+
+          <table>
+            <tr>
+              <th>ครั้งที่</th>
+              <th>R<sub>1</sub> (Ω)</th>
+              <th>R<sub>2</sub> (Ω)</th>
+              <th>E (V)</th>
+              <th>VR<sub>1</sub> (V)</th>
+              <th>VR<sub>2</sub> (V)</th>
+              <th>-E + VR<sub>1</sub> + VR<sub>2</sub> = 0</th>
+              <th>ค่าผิดพลาด (%)</th>
+            </tr>
+            <tr class="example-row">
+              <td>1 <br> <span class="red">(ตัวอย่าง)</span></td>
+              <td>1 kΩ</td>
+              <td>1 kΩ</td>
+              <td>9 V</td>
+              <td>4.6 V</td>
+              <td>4.5 V</td>
+              <td>-9 + 4.6 + 4.5 = 0.1</td>
+              <td><span class="red">0.1V<br>9V</span> = 1.11%</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
         </ol>
+
+<h3>คำถาม</h3>
+<ol>
+    <li>ผลการทดลองในตอนที่ 1 สอดคล้องกับสมการแบ่งแรงดันหรือไม่</li>
+    <li>ความผิดพลาดในการทดลองเกิดจากปัจจัยใดได้บ้าง</li>
+    <li>ผลการทดลองในตอนที่ 2 มีความสอดคล้องกับทฤษฎีบทของ KVL หรือไม่อย่างไร</li>
+</ol>
+
 </body>
 </html>
